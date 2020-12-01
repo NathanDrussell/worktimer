@@ -1,0 +1,17 @@
+{
+  "name": "worktimer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "rebuild": "electron-rebuild"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^11.0.3"
+  },
+  "devDependencies": {}
+}

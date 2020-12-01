@@ -1,0 +1,77 @@
+body {
+  margin: 0;
+  background: #313131;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+.content {
+  height: 100vh;
+  padding: 15px;
+  box-sizing: border-box;
+  display: grid;
+  gap: 10px;
+  grid-template:
+    "working working" 100px
+    "timer timer" 100px
+    "start stop" calc(100% - 210px);
+}
+
+button {
+  border: unset;
+  outline: none;
+  font-size: 5rem;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 5px;
+  height: 100%;
+  background: #444444;
+  color: white;
+}
+
+button:active {
+  background: #222222;
+}
+
+.timer {
+  grid-area: timer;
+  font-size: 5rem;
+  background: #212121;
+  text-align: center;
+  color: white;
+  border-radius: 5px;
+  object-fit: cover;
+  font-variant-numeric: tabular-nums;
+  position: relative;
+}
+
+#start {
+  grid-area: start;
+  color: limegreen;
+}
+
+#stop {
+  grid-area: stop;
+  color: tomato;
+}
+
+#status {
+  grid-area: working;
+  font-size: 5rem;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.active {
+  background: seagreen;
+  color: white;
+}
+
+#milli {
+  font-size: 3rem;
+  position: absolute;
+  left: calc(50% + 200px);
+  color: #fff3;
+  bottom: 15px;
+  transform: translateX(-50%);
+}

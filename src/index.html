@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="content">
+      <div id="status">WORKING</div>
+      <div class="timer">
+        <div id="timer">00:00:00</div>
+        <div id="milli">.000</div>
+      </div>
+      <button id="start">start</button>
+      <button id="stop">stop</button>
+    </div>
+    <script>
+      let date = new Date().toLocaleDateString();
+      let duration = localStorage[date] ? parseInt(localStorage[date]) : 0;
+      let last = Date.now();
+      let interval = null;
+
+      function modded(val, mod = 60, count = -2) {
+        return `000${val % mod}`.slice(count);
+      }
+
+      function convertDuration() {
+        const seconds = parseInt(duration / 1000);
+        const minutes = parseInt(seconds / 60);
+        const hours = parseInt(minutes / 60);
+
+        const h = modded(hours, 24);
+        const m = modded(minutes);
+        const s = modded(seconds);
+
+        return `${h}:${m}:${s}`;
+      }
+
+      setDisplay();
+
+      function setDisplay() {
+        document.getElementById("timer").innerHTML = convertDuration();
+        document.getElementById("milli").innerHTML =
+          "." + modded(duration, 1000, -3);
+      }
+
+      const timer = () => {
+        duration += Date.now() - last;
+        last = Date.now();
+        setDisplay();
+      };
+
+      function stop() {
+        localStorage[date] = duration;
+        document.getElementById("status").classList.remove("active");
+        clearInterval(interval);
+        interval = null;
+      }
+
+      function start() {
+        if (!interval) {
+          document.getElementById("status").classList.add("active");
+          const ndate = new Date().toLocaleDateString();
+          if (ndate !== date) {
+            date = ndate;
+            duration = 0;
+          }
+
+          last = Date.now();
+          interval = setInterval(timer);
+        }
+      }
+
+      document.getElementById("start").onclick = start;
+      document.getElementById("stop").onclick = stop;
+    </script>
+  </body>
+</html>
