@@ -12,7 +12,7 @@ function createWindow() {
     })
 
     win.loadFile('src/index.html')
-    win.webContents.openDevTools()
+    win.setFullScreen(true)
 }
 
 app.whenReady().then(createWindow)
