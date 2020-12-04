@@ -12,9 +12,9 @@ body {
   display: grid;
   gap: 10px;
   grid-template:
-    "working working" 100px
+    "header header" 30px
     "timer timer" 100px
-    "start stop" calc(100% - 210px);
+    "start stop" calc(100% - 150px);
 }
 
 button {
@@ -55,16 +55,13 @@ button:active {
   color: tomato;
 }
 
-#status {
-  grid-area: working;
-  font-size: 5rem;
-  text-align: center;
-  border-radius: 5px;
+.active {
+  background: limegreen;
+  color: white;
 }
 
-.active {
-  background: seagreen;
-  color: white;
+.active > #milli {
+  color: #fff6;
 }
 
 #milli {
@@ -74,4 +71,37 @@ button:active {
   color: #fff3;
   bottom: 15px;
   transform: translateX(-50%);
+}
+
+#reset {
+  width: 100px;
+  height: 30px;
+  font-size: 1rem;
+  padding: 0px;
+  margin: 0px;
+  background: transparent;
+}
+
+#reset:active {
+  background: #0008;
+}
+
+#date {
+  font-size: 1rem;
+  color: white;
+}
+
+#remaining {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  z-index: 2;
+  font-size: 1.5rem;
+}
+
+.header {
+  grid-area: header;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
