@@ -12,9 +12,9 @@ body {
   display: grid;
   gap: 10px;
   grid-template:
-    "header header" 30px
+    "header header" 50px
     "timer timer" 100px
-    "start stop" calc(100% - 150px);
+    "start stop" calc(100% - 170px);
 }
 
 button {
@@ -76,7 +76,7 @@ button:active {
 #reset {
   width: 100px;
   height: 30px;
-  font-size: 1rem;
+  font-size: 2rem;
   padding: 0px;
   margin: 0px;
   background: transparent;
@@ -87,7 +87,8 @@ button:active {
 }
 
 #date {
-  font-size: 1rem;
+  font-size: 2rem;
+  font-weight: bold;
   color: white;
 }
 
